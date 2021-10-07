@@ -4,42 +4,51 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.convidados.databinding.FragmentHomeBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.convidados.R
+import com.example.convidados.View.Adapter.GuestAdapter
 import com.example.convidados.ViewModel.AllGuestsViewModel
 
 class AllGuestsFragment : Fragment() {
 
     private lateinit var allGuestsViewModel: AllGuestsViewModel
-    private var _binding: FragmentHomeBinding? = null
+    private val mAdapter = GuestAdapter()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        allGuestsViewModel =
-            ViewModelProvider(this).get(AllGuestsViewModel::class.java)
+        allGuestsViewModel = ViewModelProvider(this).get(AllGuestsViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val root: View = inflater.inflate(R.layout.fragment_all, container, false)
 
-        val textView: TextView = binding.textHome
-        allGuestsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        val recycler = root.findViewById<RecyclerView>(R.id.recycler_all_guest)
+        recycler.layoutManager = LinearLayoutManager(root.context)
+        recycler.adapter = mAdapter
+
+        observer()
+        allGuestsViewModel.load()
+
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onResume() {
+        allGuestsViewModel.load()
+        super.onResume()
     }
+
+    private fun observer() {
+        allGuestsViewModel.guestList.observe(viewLifecycleOwner, Observer {
+            mAdapter.updateGuest(it)
+        })
+    }
+
 }
