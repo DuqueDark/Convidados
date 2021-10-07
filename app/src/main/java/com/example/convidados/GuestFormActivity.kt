@@ -12,7 +12,5 @@ class GuestFormActivity : AppCompatActivity() {
             supportActionBar?.hide()
         }
 
-
-        //la la la la la la
     }
 }
