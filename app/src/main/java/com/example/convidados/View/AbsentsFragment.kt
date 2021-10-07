@@ -1,4 +1,4 @@
-package com.example.convidados.ui.slideshow
+package com.example.convidados.View
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.convidados.R
 import com.example.convidados.databinding.FragmentSlideshowBinding
+import com.example.convidados.ViewModel.AbsentsViewModel
 
-class SlideshowFragment : Fragment() {
+class AbsentsFragment : Fragment() {
 
-    private lateinit var slideshowViewModel: SlideshowViewModel
+    private lateinit var absentsViewModel: AbsentsViewModel
     private var _binding: FragmentSlideshowBinding? = null
 
     // This property is only valid between onCreateView and
@@ -25,14 +25,14 @@ class SlideshowFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
-            ViewModelProvider(this).get(SlideshowViewModel::class.java)
+        absentsViewModel =
+            ViewModelProvider(this).get(AbsentsViewModel::class.java)
 
         _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textSlideshow
-        slideshowViewModel.text.observe(viewLifecycleOwner, Observer {
+        absentsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
