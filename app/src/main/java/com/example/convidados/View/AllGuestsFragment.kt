@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.convidados.R
 import com.example.convidados.Service.Constants.GuestConstants
+import com.example.convidados.Service.Model.GuestModel
 import com.example.convidados.View.Adapter.GuestAdapter
 import com.example.convidados.View.Listener.GuestListener
 import com.example.convidados.ViewModel.AllGuestsViewModel
@@ -51,8 +52,8 @@ class AllGuestsFragment : Fragment() {
                 startActivity(intent)
             }
 
-            override fun onDelete(id: Int) {
-                allGuestsViewModel.delete(id)
+            override fun onDelete(guest:GuestModel) {
+                allGuestsViewModel.delete(guest)
                 allGuestsViewModel.load()
             }
 

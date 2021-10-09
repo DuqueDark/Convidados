@@ -23,8 +23,8 @@ class GuestViewHolder(view: View,private val listener: GuestListener): RecyclerV
             AlertDialog.Builder(itemView.context)
                 .setTitle(R.string.remocao_convidado)
                 .setMessage(R.string.deseja_remover)
-                .setPositiveButton(R.string.remover){ dialog, which->
-                    listener.onDelete(guest.id)
+                .setPositiveButton(R.string.remover){ _, _ ->
+                    listener.onDelete(guest)
                 }
                 .setNeutralButton(R.string.cancelar,null)
                 .show()

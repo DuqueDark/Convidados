@@ -1,15 +1,13 @@
 package com.example.convidados.View
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.convidados.ViewModel.GuestFormViewModel
 import com.example.convidados.R
 import com.example.convidados.Service.Constants.GuestConstants
+import com.example.convidados.ViewModel.GuestFormViewModel
 import kotlinx.android.synthetic.main.activity_guest_form.*
 
 class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
