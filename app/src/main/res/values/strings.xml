@@ -11,11 +11,15 @@
     <string name="menu_presents">Presentes</string>
     <string name="menu_absents">Ausentes</string>
     <string name="name">Nome</string>
-    <string name="exemple_victor_pereira">Exemple: Victor Pereira</string>
+    <string name="exemple_victor_pereira">Example: Victor Pereira</string>
     <string name="confirmation">Confirmação</string>
     <string name="present">Presente</string>
     <string name="absenst">Ausente</string>
     <string name="save">Salvar</string>
     <string name="success">Sucesso</string>
     <string name="fail">Falha</string>
+    <string name="remocao_convidado">Remoção de convidado</string>
+    <string name="deseja_remover">Deseja remover o convidado?</string>
+    <string name="remover">Remover</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
